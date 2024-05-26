@@ -37,3 +37,6 @@ models:
       +materialized: table
     src:
       +materialized: ephemeral
+
+vars:
+  user_name: default_user_name
