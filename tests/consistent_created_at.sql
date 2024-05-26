@@ -1,7 +1,7 @@
 SELECT  
     * 
 FROM
-    {{ ref("fact_reviews") }} a 
+    {{ ref("fct_reviews") }} a 
 LEFT JOIN
     {{ ref("dim_listings_cleansed") }} b
         using (listing_id)

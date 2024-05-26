@@ -75,3 +75,20 @@ models:
       - name: updated_at
         description: Date when the host was last updated
         data_type: timestamp_ntz
+  - name: dim_listings_w_hosts
+    data_tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: source('airbnb', 'listings')
+    columns:
+      - name: price
+        data_tests:
+          - dbt_expectations.expect_column_quantile_values_to_be_between:
+              quantile: .99
+              min_value: 10
+              max_value: 1000
+          - dbt_expectations.expect_column_max_to_be_between:
+              max_value: 5000
+              config:
+                severity: warn
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: number
