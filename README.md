@@ -41,3 +41,8 @@ pip install -U -r requirements.txt
 ```
 dbt deps
 ```
+## Dagster local server
+- After installing from the requirements file, set up the dagster project 
+```
+dagster-dbt project scaffold --project-name dbt_dagster_project --dbt-project-dir=../dbtlearn
+```
